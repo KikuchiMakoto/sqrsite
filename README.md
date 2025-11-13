@@ -1,2 +1,1 @@
-# qrcode
-Bullshit
+変なQRコード開くのはやめましょうね、サイト
