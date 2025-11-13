@@ -1,51 +1,48 @@
-// app.js (多言語対応版)
+// app.js (多言語対応＋画像＋煽りメッセージ版)
 
-// HTMLドキュメントの読み込みが完了したときに、中の処理を実行する
 window.addEventListener('DOMContentLoaded', () => {
-
-    // 1. ユーザーのブラウザの言語設定を取得 (例: 'ja-JP', 'en-US', 'zh-CN'など)
-    //    小文字に統一して判定しやすくします
     const userLanguage = (navigator.language || navigator.userLanguage).toLowerCase();
 
-    // (参考) 端末情報
-    const userAgent = navigator.userAgent;
-
-    // (参考) 開発者ツールで確認できるように、取得した情報をコンソールに出力
     console.log('ブラウザ言語:', userLanguage);
-    console.log('端末情報:', userAgent);
+    console.log('端末情報:', navigator.userAgent); // ユーザーエージェントも表示
 
-    // 3. HTML側でメッセージを表示させたい場所（要素）を取得
-    const messageElement = document.getElementById('warning-message');
+    const mainMessageElement = document.getElementById('main-warning-message');
+    const subMessageElement = document.getElementById('sub-warning-message');
 
-    // 4. 言語情報に基づいて表示するメッセージを決定
-    let message = '';
+    let mainMessage = '';
+    let subMessage = '';
 
     if (userLanguage.startsWith('ja')) {
-        // 日本語 (ja, ja-JP など)
-        message = '不審なQRコードを読み込むのはやめましょう';
+        // 日本語
+        mainMessage = '不審なQRコードを読み込むのはやめましょう';
+        subMessage = 'これが危険なサイトだったとしたら、、、と考えてみてください。';
 
     } else if (userLanguage.startsWith('zh')) {
-        // 中国語 (zh, zh-CN, zh-TW など)
-        message = '请勿扫描可疑的QR码'; // 簡体字
+        // 中国語 (簡体字)
+        mainMessage = '请勿扫描可疑的QR码';
+        subMessage = '请思考一下，如果这是一个危险的网站，会发生什么？';
 
     } else if (userLanguage.startsWith('ko')) {
-        // 韓国語 (ko, ko-KR など)
-        message = '의심스러운 QR 코드를 스캔하지 마십시오';
+        // 韓国語
+        mainMessage = '의심스러운 QR 코드를 스캔하지 마십시오';
+        subMessage = '만약 이 사이트가 위험한 사이트였다면 어떻게 되었을지 생각해 보세요.';
 
     } else if (userLanguage.startsWith('es')) {
-        // スペイン語 (es, es-ES, es-MX など)
-        message = 'No escanee códigos QR sospechosos';
+        // スペイン語
+        mainMessage = 'No escanee códigos QR sospechosos';
+        subMessage = 'Piense qué pasaría si este fuera un sitio peligroso.';
 
     } else if (userLanguage.startsWith('fr')) {
-        // フランス語 (fr, fr-FR, fr-CA など)
-        message = 'Ne scannez pas de codes QR suspects';
+        // フランス語
+        mainMessage = 'Ne scannez pas de codes QR suspects';
+        subMessage = 'Imaginez ce qui se passerait si c\'était un site dangereux.';
 
     } else {
-        // 上記以外（デフォルト: 英語）
-        // (en, en-US, en-GB などもここに含まれます)
-        message = 'Do not scan suspicious QR codes.';
+        // デフォルト: 英語
+        mainMessage = 'Do not scan suspicious QR codes.';
+        subMessage = 'Consider what would happen if this were a dangerous site.';
     }
 
-    // 5. 取得したHTML要素（h1タグ）の中に、決定したメッセージをテキストとして挿入
-    messageElement.textContent = message;
+    mainMessageElement.textContent = mainMessage;
+    subMessageElement.textContent = subMessage;
 });
