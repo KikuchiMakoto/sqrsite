@@ -14,6 +14,7 @@
             background-color: #f9f9f9;
             margin: 0;
             padding: 1rem;
+            line-height: 1.6; /* 行の高さを調整 */
         }
         /* 警告メッセージのコンテナ */
         #warning-container {
@@ -23,19 +24,38 @@
             background-color: #ffffff;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             border: 1px solid #eee;
+            max-width: 600px; /* コンテナの最大幅を設定 */
         }
         /* 警告メッセージ本体 */
-        #warning-message {
+        #main-warning-message {
             color: #d9534f; /* 警告を示す赤色 */
-            font-size: 1.5rem;
+            font-size: 1.8rem; /* 少し大きく */
             font-weight: bold;
+            margin-bottom: 1rem; /* 下に余白 */
+        }
+        /* 追加の警告メッセージ */
+        #sub-warning-message {
+            color: #555; /* やや落ち着いた色 */
+            font-size: 1.1rem;
+            margin-top: 1rem; /* 上に余白 */
+        }
+        /* 画像のスタイル */
+        #warning-image {
+            max-width: 100%; /* 親要素の幅に合わせて画像を縮小 */
+            height: auto; /* 高さを自動調整 */
+            margin-bottom: 1.5rem; /* 画像の下に余白 */
+            border-radius: 8px; /* 角を丸く */
         }
     </style>
 </head>
 <body>
 
     <div id="warning-container">
-        <h1 id="warning-message"></h1>
+        <img id="warning-image" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiu58G5uba42f2106I5AayzpSdtvY0xH-XwhzcioABY9cB61gNOBiciC1NY82Q_dHh4Ob0koWzsJGYnC5jajdseCGZ0kVhILQl9YN9z1NkgnYjBxs5KbJuOz5DjBtRyRgYa6tu5gWpRdJo-/s800/bakanisuru.png" alt="警告画像">
+        
+        <h1 id="main-warning-message"></h1>
+        
+        <h2 id="sub-warning-message"></h2>
     </div>
 
     <script src="app.js"></script>
